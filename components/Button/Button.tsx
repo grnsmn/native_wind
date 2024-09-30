@@ -1,42 +1,43 @@
+import clsx from 'clsx';
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View} from 'react-native';
 
 export type ButtonProps = {
   onPress: () => void;
   text: string;
   color?: string;
   textColor?: string;
+  rounded?: string;
+  variant?: 'primary' | 'secondary';
+  disabled?: boolean;
 };
 
-const styles = StyleSheet.create({
-  button: {
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 4,
-    alignSelf: 'flex-start',
-    flexGrow: 0,
-    backgroundColor: 'purple',
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
-  buttonContainer: {
-    alignItems: 'flex-start',
-    flex: 1,
-  },
-});
+export const MyButton = ({text, rounded, variant, disabled}: ButtonProps) => {
+  const textStyle = clsx(
+    'font-sans',
+    'font-bold',
+    variant === 'primary' && 'text-blue',
+    variant === 'secondary' && 'text-blue',
+  );
 
-export const MyButton = ({text, onPress, color, textColor}: ButtonProps) => (
-  <View style={styles.buttonContainer}>
-    <TouchableOpacity
-      style={[styles.button, !!color && {backgroundColor: color}]}
-      onPress={onPress}
-      activeOpacity={0.8}>
-      <Text style={[styles.buttonText, !!textColor && {color: textColor}]}>
-        {text}
-      </Text>
-    </TouchableOpacity>
-  </View>
-);
+  const touchableStyle = clsx(
+    rounded,
+    'p-4',
+    'flex-grow-0',
+    variant === 'primary' && 'bg-blue',
+    variant === 'secondary' && 'bg-tahiti-300',
+  );
+
+  const containerStyle = clsx(
+    'flex-1 items-center justify-center',
+    disabled && 'opacity-50',
+  );
+
+  return (
+    <View className={containerStyle}>
+      <TouchableOpacity disabled={disabled} className={touchableStyle}>
+        <Text className={textStyle}>{text}</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
