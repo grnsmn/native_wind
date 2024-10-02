@@ -4,4 +4,6 @@ module.exports = {
   bracketSpacing: false,
   singleQuote: true,
   trailingComma: 'all',
+  plugins: [require('prettier-plugin-tailwindcss')],
+  tailwindFunctions: ['tv']
 };
