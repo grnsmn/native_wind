@@ -6,19 +6,21 @@ module.exports = {
       sans: ['Poppins'],
     },
     colors: {
-      tahiti: {
-        100: '#cffafe',
-        200: '#a5f3fc',
-        300: '#67e8f9',
-        400: '#22d3ee',
-        500: '#06b6d4',
-        600: '#0891b2',
-        700: '#0e7490',
-        800: '#155e75',
-        900: '#164e63',
+      white: '#ffffff',
+      primary: {
+        100: '#FFCAEA',
+        200: '#EE43A1',
+        300: '#E5007D',
+        400: '#A9015D',
+        500: '#6C013E',
       },
     },
-    extend: {},
+    extend: {
+      spacing: {
+        sm: '14px',
+        base: '16px',
+    },
+    },
   },
   plugins: [],
 };
