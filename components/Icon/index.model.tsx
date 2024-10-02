@@ -1,16 +1,11 @@
 import { tv } from "tailwind-variants";
 
-export type ButtonProps = {
-    onPress: () => void;
-    text: string;
-    color?: string;
-    textColor?: string;
-    iconName?: string | undefined;
-    variant?: 'outline' | undefined;
-    disabled?: boolean;
-    isLarge?: boolean;
-    isLoading?: boolean;
-  };
+export type IconProps = {
+  name: string | undefined;
+  size?: number;
+  color?: string;
+  style?: string;
+}
   
   export const ButtonStyle = tv({
     slots: {
