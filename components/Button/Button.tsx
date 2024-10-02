@@ -1,43 +1,36 @@
-import clsx from 'clsx';
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, Pressable} from 'react-native';
 
-export type ButtonProps = {
-  onPress: () => void;
-  text: string;
-  color?: string;
-  textColor?: string;
-  rounded?: string;
-  variant?: 'primary' | 'secondary';
-  disabled?: boolean;
-};
+import Icon from '../Icon/Icon';
+import {ButtonProps, ButtonStyle} from './index.model';
 
-export const MyButton = ({text, rounded, variant, disabled}: ButtonProps) => {
-  const textStyle = clsx(
-    'font-sans',
-    'font-bold',
-    variant === 'primary' && 'text-blue',
-    variant === 'secondary' && 'text-blue',
-  );
 
-  const touchableStyle = clsx(
-    rounded,
-    'p-4',
-    'flex-grow-0',
-    variant === 'primary' && 'bg-blue',
-    variant === 'secondary' && 'bg-tahiti-300',
-  );
+export const MyButton = ({
+  text,
+  variant,
+  disabled,
+  iconName,
+  isLarge,
+  isLoading,
+  ...props
+}: ButtonProps) => {
 
-  const containerStyle = clsx(
-    'flex-1 items-center justify-center',
-    disabled && 'opacity-50',
-  );
+  const {
+    container,
+    text: textStyle,
+    icon: iconStyle,
+  } = ButtonStyle({variant, disabled, isLarge, isLoading});
+
+  const getIconName = (): string | undefined => isLoading ? 'spinner' : iconName;
 
   return (
-    <View className={containerStyle}>
-      <TouchableOpacity disabled={disabled} className={touchableStyle}>
-        <Text className={textStyle}>{text}</Text>
-      </TouchableOpacity>
-    </View>
+    <Pressable
+      className={container()}
+      disabled={disabled}
+      {...props}
+    >
+      {iconName && <Icon name={getIconName()} size={16} style={iconStyle()} />}
+      {!isLoading &&<Text className={textStyle()}>{text}</Text>}
+    </Pressable>
   );
 };
