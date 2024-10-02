@@ -1,21 +1,28 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+
+import type {Meta, StoryObj} from '@storybook/react';
 import React from 'react';
+import fontelloConfig from '../configIconPack.json';
+
+const iconsNames = fontelloConfig.glyphs.map(item => item.css);
 
 import Icon from './Icon';
 
-export default {
+const meta = {
   title: 'components/Icon',
   component: Icon,
   args: {
-    name: 'spinner',
-    size: 20,
-
   },
-} as ComponentMeta<typeof Icon>;
+  argTypes: {
+    name: {
+      control: 'select',
+      options: iconsNames,
+      defaultValue: 'vidoser',
+    },
+  },
+} satisfies Meta<typeof Icon>;
 
-const Template: ComponentStory<typeof Icon> = (args) => (
-  <Icon {...args} />
-);
+export default meta;
 
-export const Story = Template.bind({});
-Story.args = {};
+type Story = StoryObj<typeof meta>;
+
+export const Basic: Story = {}

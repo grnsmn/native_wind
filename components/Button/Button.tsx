@@ -4,7 +4,6 @@ import {Text, Pressable} from 'react-native';
 import Icon from '../Icon/Icon';
 import {ButtonProps, ButtonStyle} from './index.model';
 
-
 export const MyButton = ({
   text,
   variant,
