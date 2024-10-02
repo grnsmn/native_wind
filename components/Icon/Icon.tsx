@@ -7,7 +7,7 @@ import { Animated, Easing } from 'react-native';
 import { useEffect, useRef } from 'react';
 import { IconProps } from './index.model';
 
-const Icon = ({name, size, style}: IconProps) => {  
+const Icon = ({name = '', size, style}: IconProps) => {  
     if (name === 'spinner') {
         const spinValue = useRef(new Animated.Value(0)).current;
 
@@ -36,7 +36,7 @@ const Icon = ({name, size, style}: IconProps) => {
         );
     }
   return (
-        <CustomIcon className={style} name={name} size={size} />
+    <CustomIcon className={style} name={name} size={size} />
   )
 }
 

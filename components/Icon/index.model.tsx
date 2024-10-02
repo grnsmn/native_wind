@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export type IconProps = {
-  name: string | undefined;
+  name: string;
   size?: number;
   color?: string;
   style?: string;

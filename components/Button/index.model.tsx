@@ -5,7 +5,7 @@ export type ButtonProps = {
     text: string;
     color?: string;
     textColor?: string;
-    iconName?: string | undefined;
+    iconName?: string;
     variant?: 'outline' | undefined;
     disabled?: boolean;
     isLarge?: boolean;

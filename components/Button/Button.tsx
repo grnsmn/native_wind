@@ -9,7 +9,7 @@ export const MyButton = ({
   text,
   variant,
   disabled,
-  iconName,
+  iconName = '',
   isLarge,
   isLoading,
   ...props
@@ -21,7 +21,7 @@ export const MyButton = ({
     icon: iconStyle,
   } = ButtonStyle({variant, disabled, isLarge, isLoading});
 
-  const getIconName = (): string | undefined => isLoading ? 'spinner' : iconName;
+  const getIconName = (): string => isLoading ? 'spinner' : iconName;
 
   return (
     <Pressable
