@@ -4,7 +4,6 @@ import { Text, TouchableOpacity, View } from 'react-native';
 import Icon from '../Icon/Icon'; // Assicurati di avere @expo/vector-icons installato
 import { CheckboxProps, CheckboxStyle } from './index.model';
 
-const StyledView = styled(View);
 const StyledTouchableOpacity = styled(TouchableOpacity);
 
 const Checkbox = ({ label, value, defaultValue, onCheck, isError, isDisabled }: CheckboxProps) => {
@@ -16,11 +15,9 @@ const Checkbox = ({ label, value, defaultValue, onCheck, isError, isDisabled }: 
 
     return (
         <StyledTouchableOpacity onPress={toggleCheckbox} disabled={isDisabled} className={container()}>
-            <StyledView
-                className={checkbox()}
-            >
+            <View className={checkbox()}>
                 {defaultValue || value && <Icon name="confirm" size={20} style={icon()} />}
-            </StyledView>
+            </View>
             <Text className={text()}>{label}</Text>
         </StyledTouchableOpacity>
     );
