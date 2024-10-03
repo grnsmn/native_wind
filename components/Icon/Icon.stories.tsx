@@ -11,13 +11,19 @@ const meta = {
   title: 'components/Icon',
   component: Icon,
   args: {
+    size: 24,
   },
   argTypes: {
     name: {
       control: 'select',
       options: iconsNames,
-      defaultValue: 'vidoser',
     },
+    size: {
+      control: 'select',
+      options: [16, 24, 32, 48, 64],
+      
+    },
+
   },
 } satisfies Meta<typeof Icon>;
 
@@ -25,4 +31,8 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Basic: Story = {}
+export const Basic: Story = {
+  args: {
+    name: 'vidoser',
+  },
+}
