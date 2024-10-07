@@ -1,5 +1,10 @@
+if (__DEV__) {
+  const Reactotron = require('./ReactotronConfig').default;
+  Reactotron.log('Reactotron Configured');
+}
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import StorybookUIRoot from './.ondevice';
 
 const styles = StyleSheet.create({
   container: {
@@ -24,4 +29,4 @@ if (process.env.STORYBOOK_ENABLED) {
   AppEntryPoint = require("./.ondevice").default;
 }
 
-export default AppEntryPoint;
+export default console.tron.storybookSwitcher(StorybookUIRoot)(AppEntryPoint);
