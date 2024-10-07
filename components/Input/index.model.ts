@@ -6,9 +6,10 @@ export type InputProps = {
     placeholder?: string | undefined;
     value?: boolean;
     defaultValue?: boolean;
-    onCheck: (value: boolean) => void;
+    onChange: (text: string) => void;
     isError?: boolean;
     isDisabled?: boolean;
+    variant?: 'filled' | undefined;
 };
 
 export const InputStyle = tv({
@@ -21,5 +22,11 @@ export const InputStyle = tv({
         footer: 'text-xs text-grayscale-300'
     },
     variants:{
+        variant: {
+            filled:{
+                input_box: 'bg-grayscale-100',
+                input: 'bg-grayscale-100',
+            }
+        }
     }
 })

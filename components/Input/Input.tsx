@@ -5,12 +5,8 @@ import Icon from '../Icon/Icon'; // Assicurati di avere @expo/vector-icons insta
 import { InputProps, InputStyle } from './index.model';
 const StyledTextInput = styled(TextInput);
 
-const Input = ({ label, placeholder, value, onCheck, isError, isDisabled }: InputProps) => {
+const Input = ({ label, placeholder, value, onChange, isError, isDisabled }: InputProps) => {
     const {container, header, label: labelStyle, footer, input, input_box } = InputStyle();
-
-    const toggleInput = () => {
-        onCheck(!value);
-    };
 
     return (
         <View className={container()}>
@@ -19,10 +15,10 @@ const Input = ({ label, placeholder, value, onCheck, isError, isDisabled }: Inpu
                 <Text className={labelStyle()}>{label}</Text>
             </View>
             <View className={input_box()}>
-                <StyledTextInput className={input()} placeholder={placeholder}/>
+                <StyledTextInput className={input()} placeholder={placeholder} onChangeText={onChange} />
                 <Icon name={'calendar'} size={24} />
             </View>
-            <Text className={footer()}>{label}</Text>
+        <Text className={footer()}>{label}</Text>
         </View>
     );
 };

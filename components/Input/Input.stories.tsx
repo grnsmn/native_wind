@@ -15,15 +15,11 @@ const meta = {
   },
   decorators: [
     (Story, context) => {
-        const [checked, setChecked] = useState(false)
-
         return (
             <View style={{ padding: 20 }}>
                 <Story args={{
                     defaultValue: false,
-                    value: checked,
                     ...context.args,
-                    onCheck: (value)=>setChecked(value),
                 }}/>
             </View>
         );
@@ -38,5 +34,7 @@ type Story = StoryObj<typeof meta>;
 export const Basic: Story = {
     args: {
         label: 'Hello World',
+        onChange: (val: string) => {console.log('🚀 ~ testing', val)},
+        variant: 'filled',
     },
 };
