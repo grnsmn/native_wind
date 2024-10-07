@@ -1,5 +1,4 @@
 import { tv } from "tailwind-variants";
-import Checkbox from "./Input";
 
 export type InputProps = {
     label: string;
